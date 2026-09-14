@@ -1,4 +1,4 @@
-package lessons.lesson3.homework
+package lessons.lesson03.homework
 
 // 1. Название мероприятия
 val eventName: String = "Hackathon Survival"
