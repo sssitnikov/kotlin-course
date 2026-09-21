@@ -241,7 +241,7 @@ fun temperatureConverter(temperature: Double, typeTemperature: Char) {
         //не вижу смысла изобретать велосипед
         'C' -> println("$convertFToC $typeTemperature")
         'F' -> println("$convertCToF $typeTemperature")
-        else -> println("Некорректный тип данных")
+        else -> println("$typeTemperature - неизвестный тип температуры")
     }
 }
 
