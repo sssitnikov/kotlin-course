@@ -13,7 +13,7 @@ fun main() {
     determiningTheSeasonThroughIf(0) // чудовище)))) Не делайте так!
 
     //Тест задания 2
-    println("\nЗадание 2. Первый вариант")
+    println("\nЗадание 2. Первый вариант с Double")
     yearOfTheDogConverterDouble(-0.1)
     yearOfTheDogConverterDouble(0.0)
     yearOfTheDogConverterDouble(0.1)
@@ -22,7 +22,7 @@ fun main() {
     yearOfTheDogConverterDouble(2.1)
 
     //второй вариант
-    println("\nЗадание 2. Второй вариант")
+    println("\nЗадание 2. Второй вариант с Int")
     yearOfTheDogConverterInt(-1)
     yearOfTheDogConverterInt(0)
     yearOfTheDogConverterInt(1)
@@ -41,6 +41,60 @@ fun main() {
     determinationOfTheMethodOfMovement(5.0)
     determinationOfTheMethodOfMovement(5.1)
 
+
+    //Тест задания 4
+    println("\nЗадание 4")
+    bonusCalculation(-1.0)
+    bonusCalculation(0.0)
+    bonusCalculation(0.01)
+    bonusCalculation(999.99)
+    bonusCalculation(1000.00)
+    bonusCalculation(1000.01)
+    bonusCalculation(3000.00)
+
+    //Тест задания 5
+    println("\nЗадание 5")
+    DeterminationTypeDocument("txt")
+    DeterminationTypeDocument("jpg")
+    DeterminationTypeDocument("xls")
+    DeterminationTypeDocument("xsl")
+
+    //Тест задания 6
+    println("\nЗадание 6")
+    temperatureConverter(0.0, 'W')
+    temperatureConverter(0.0, 'F')
+    temperatureConverter(0.1, 'F')
+    temperatureConverter(0.0, 'C')
+    temperatureConverter(0.1, 'C')
+
+    //Тест задания 7
+    println("\nЗадание 7")
+    chooseClothes(-35.1)
+    chooseClothes(-35.0)
+    chooseClothes(-34.9)
+    chooseClothes(-10.1)
+    chooseClothes(-10.0)
+    chooseClothes(9.9)
+    chooseClothes(10.0)
+    chooseClothes(10.1)
+    chooseClothes(17.9)
+    chooseClothes(18.0)
+    chooseClothes(18.1)
+    chooseClothes(34.9)
+    chooseClothes(35.0)
+    chooseClothes(35.1)
+
+    //Тест задания 8
+    println("\nЗадание 8")
+    chooseMovie(-1)
+    chooseMovie(0)
+    chooseMovie(1)
+    chooseMovie(8)
+    chooseMovie(9)
+    chooseMovie(10)
+    chooseMovie(17)
+    chooseMovie(18)
+    chooseMovie(19)
 }
 
 /*
@@ -140,3 +194,134 @@ fun determinationOfTheMethodOfMovement(distance: Double) {
 Напишите функцию, которая принимает сумму покупки и печатает в консоль количество бонусных баллов:
 2 балла за каждые 100 рублей при сумме покупки до 1000 рублей и 3 балла за каждые 100 рублей при сумме свыше этого.
 */
+
+fun bonusCalculation(purchaseAmount: Double) {
+    var bonus = 0.0
+    if (purchaseAmount < 0) {
+        println("Некорректная сумма покупки")
+    } else if (purchaseAmount < 1000) {
+        bonus = (purchaseAmount / 100 + purchaseAmount % 100) * 2
+        println(String.format("Начислено бонусов: %.2f", bonus))
+    } else {
+        bonus = (purchaseAmount / 100 + purchaseAmount % 100) * 3
+        println(String.format("Начислено бонусов: %.2f", bonus))
+    }
+}
+
+/*
+Задание 5: "Определение типа документа"
+В системе хранения документов каждый файл имеет расширение.
+Напишите функцию, которая на основе расширения файла печатает в консоль его тип:
+"Текстовый документ", "Изображение", "Таблица" или "Неизвестный тип".
+*/
+
+fun DeterminationTypeDocument(typeFormat: String) {
+    when (typeFormat) {
+        "txt", "doc", "docx" -> println("$typeFormat - это Текстовый документ")
+        "jpeg", "jpg", "png", "heic" -> println("$typeFormat - Изображение")
+        "xls", "xlsx" -> println("$typeFormat - Таблица")
+        else -> println("$typeFormat - Неизвестный тип")
+    }
+}
+
+/*
+Задание 6: "Конвертация температуры"
+Создайте функцию, которая конвертирует температуру из градусов Цельсия в Фаренгейты и
+наоборот в зависимости от указанной единицы измерения (C/F).
+Единицу измерения нужно передать вторым аргументом функции.
+Несколько аргументов передаются через запятую.
+Распечатай в консоль результат конвертации с добавлением единицы измерения.
+Чтобы добавить единицу измерения после результата используй функцию печати без переноса строки print("C") или print("F").
+*/
+
+fun temperatureConverter(temperature: Double, typeTemperature: Char) {
+    var convertCToF = ((temperature * (9 / 5)) + (temperature * (9 % 5))) + 32
+    var convertFToC = ((temperature - 32) * (5 / 9)) + ((temperature - 32) * (5 % 9))
+    when (typeTemperature) {
+        //не вижу смысла изобретать велосипед
+        'C' -> println("$convertFToC $typeTemperature")
+        'F' -> println("$convertCToF $typeTemperature")
+        else -> println("Некорректный тип данных")
+    }
+}
+
+/*
+Задание 7: "Подбор одежды по погоде"
+Напишите функцию, которая на основе температуры воздуха рекомендует тип одежды:
+"куртка и шапка" при температуре ниже +10,
+"ветровка" от +10 до +18 градусов включительно и
+"футболка и шорты" при температуре выше +18 градусов.
+При температурах ниже -30 и выше +35 рекомендуйте не выходить из дома.
+*/
+
+fun chooseClothes(temperature: Double) {
+    if (temperature < -30.0 || temperature > 35.0) {
+        println("$temperature - Рекомендую не выходить из дома")
+    } else if (temperature < 10.0) {
+        println("$temperature - куртка и шапка")
+    } else if (temperature > 18.0) {
+        println("$temperature - футболка и шорты")
+    } else {
+        println("$temperature - ветровка")
+    }
+
+    /*
+    через when
+            when {
+            (temperature < -30.0 || temperature > 35.0) -> {
+                println("$temperature - Рекомендую не выходить из дома")
+            }
+            (temperature < 10.0) -> {
+                println("$temperature - куртка и шапка")
+            }
+            (temperature > 18.0) -> {
+                println("$temperature - футболка и шорты")
+            }
+            else -> {
+                println("$temperature - футболка и шорты")
+            }
+        }*/
+}
+
+/*
+Задание 8: "Выбор фильма по возрасту"
+Кинотеатр предлагает фильмы разных возрастных категорий.
+Напишите функцию, которая принимает возраст зрителя и возвращает доступные для него категории фильмов:
+"детские" (от 0 до 9),
+"подростковые" (от 10 до 18),
+"18+" для остальных.
+*/
+
+fun chooseMovie(age: Int) {
+    var intRangeChildren = 0..9
+    var intRangeTeen = 10 until 18
+    when {
+        age < 0 -> {
+            println("таких фильмов не бывает")
+        }
+
+        (age in intRangeChildren) -> {
+            println("детские")
+        }
+
+        (age in intRangeTeen) -> {
+            println("подростковые")
+        }
+
+        else -> {
+            println("18+")
+        }
+    }
+
+    /*    if (age < 0) {
+            println("таких фильмов не бывает")
+        }
+        else if (age in intRangeChildren) {
+            println("детские")
+        } else if (age in intRangeTeen) {
+            println("подростковые")
+        } else {
+            println("18+")
+        }*/
+
+}
