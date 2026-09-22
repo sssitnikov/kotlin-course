@@ -174,7 +174,7 @@ fun example15() {
     var i = 1
     while (i <= 10) {
         if (i % 3 == 0) {
-            i++
+            i++ //попал в засаду без инкремента
             continue
         }
         print(i)
