@@ -29,6 +29,7 @@ fun main() {
     //6
     creatingAcronymFromPhrase ("Котлин лучший язык программирования")
     creatingAcronymFromPhrase ("Ну тут может быть какой-то текст с пробелами")
+    creatingAcronymFromPhrase ("")
 }
 
 fun stringConversion (text: String)  {
@@ -135,8 +136,11 @@ fun creatingAcronymFromPhrase (text: String) {
     var abbr = ""
 
     for (word in splitText) {
-        //тк у нас каждый текст состоит из чар можно условиться на 0 чар из массива
-        abbr += word[0].uppercase()
+        //проверка на пустоту
+        if (word.isNotEmpty()){
+            //тк у нас каждый текст состоит из чар можно условиться на 0 чар из массива
+            abbr += word[0].uppercase()
+        }
     }
 
     println(abbr)
