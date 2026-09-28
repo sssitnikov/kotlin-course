@@ -78,6 +78,7 @@ fun decrypt(text: String) {
 
 fun multiplicationTable(x: Int, y: Int) {
     var xy = x * y
+    //TODO: подумать как можно убрать пропуски вначале
     for (i in 0..x) {
         for (j in 0..y) {
             if (i == 0 && j == 0) {
