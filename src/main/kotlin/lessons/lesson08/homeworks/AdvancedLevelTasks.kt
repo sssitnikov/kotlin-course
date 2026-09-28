@@ -2,8 +2,8 @@ package lessons.lesson08.homeworks
 
 fun main() {
     //7
-    allWordsCapitalized ("сегодня мы изучаем строки")
-    allWordsCapitalized ("мЫ прОбудем Всякий тАкой Текст 123 ываввыа")
+    allWordsCapitalized("сегодня мы изучаем строки")
+    allWordsCapitalized("мЫ прОбудем Всякий тАкой Текст 123 ываввыа")
 
     //8
     encrypt("Kotlin")
@@ -11,17 +11,17 @@ fun main() {
     decrypt("oKltni")
 
     //9
-    multiplicationTable(40,40)
+    multiplicationTable(40, 40)
 
 }
 
-fun allWordsCapitalized (text: String) {
-/*
-7. Все слова с большой буквы
-    Напишите метод, который преобразует строку из нескольких слов в строку,
-    где каждое слово начинается с заглавной буквы а все остальные - строчные.
-    Используй перебор, анализ символов и замену букв на заглавную с помощью метода uppercase() для конкретной буквы.
-*/
+fun allWordsCapitalized(text: String) {
+    /*
+    7. Все слова с большой буквы
+        Напишите метод, который преобразует строку из нескольких слов в строку,
+        где каждое слово начинается с заглавной буквы а все остальные - строчные.
+        Используй перебор, анализ символов и замену букв на заглавную с помощью метода uppercase() для конкретной буквы.
+    */
     var SplitAllWordsCapitalized = text.split(" ")
     var newText = ""
 
@@ -52,13 +52,13 @@ fun encrypt(text: String) {
     var encryptText = text
     var result = ""
 
-    if (encryptText.length % 2 != 0){
+    if (encryptText.length % 2 != 0) {
         encryptText += " "
     }
 
-    for(word in 0 until encryptText.length step 2) {
-        result += encryptText [word + 1]
-        result += encryptText [word]
+    for (word in 0 until encryptText.length step 2) {
+        result += encryptText[word + 1]
+        result += encryptText[word]
     }
 
     println(result)
@@ -68,54 +68,29 @@ fun decrypt(text: String) {
     var encryptText = text
     var result = ""
 
-    for(word in 0 until encryptText.length step 2) {
-        result += encryptText [word + 1]
-        result += encryptText [word]
+    for (word in 0 until encryptText.length step 2) {
+        result += encryptText[word + 1]
+        result += encryptText[word]
     }
 
     println(result)
 }
 
-fun multiplicationTable (x: Int, y: Int) {
-    /*
+fun multiplicationTable(x: Int, y: Int) {
     var xy = x * y
     for (i in 0..x) {
         for (j in 0..y) {
             if (i == 0 && j == 0) {
                 print("%${xy.toString().length + 1}s".format(""))
-            }
-            else if (j == 0) {
+            } else if (j == 0) {
                 print("%${xy.toString().length + 1}d".format(i))
-            }
-            else if (i == 0) {
+            } else if (i == 0) {
                 print("%${xy.toString().length + 1}d".format(j))
-            }
-            else {
+            } else {
                 print("%${xy.toString().length + 1}d".format(i * j))
             }
 
         }
         println()
     }
-    */
-    var xy = x * y
-    for (i in 0..x) {
-        for (j in 0..y) {
-            if (i == 0 && j == 0) {
-                print("%${xy.toString().length + 1}s".format(""))
-            }
-            else if (j == 0) {
-                print("%${xy.toString().length + 1}d".format(i))
-            }
-            else if (i == 0) {
-                print("%${xy.toString().length + 1}d".format(j))
-            }
-            else {
-                print("%${xy.toString().length + 1}d".format(i * j))
-            }
-
-        }
-        println()
-    }
-
 }
