@@ -22,19 +22,15 @@ fun allWordsCapitalized(text: String) {
         где каждое слово начинается с заглавной буквы а все остальные - строчные.
         Используй перебор, анализ символов и замену букв на заглавную с помощью метода uppercase() для конкретной буквы.
     */
-    var SplitAllWordsCapitalized = text.split(" ")
+    //var SplitAllWordsCapitalized = text.split(" ")
     var newText = ""
 
-    for (word in SplitAllWordsCapitalized) {
+    for (word in text.split(" ")) {
         var firstChar = word[0].uppercase()
         var lastChars = word.substring(1).lowercase()
-        newText += " $firstChar$lastChars" //не нравится такое решение, т.к. создается 1 пустой символ (костыль)
-        //newText += "$firstChar$lastChars "
+        newText += "$firstChar$lastChars "
     }
-    //TODO: сделать проверку на пустоту
-    newText = newText.substring(1)
-    println(text)
-    println(newText)
+    println(newText.trim())
 
 }
 
